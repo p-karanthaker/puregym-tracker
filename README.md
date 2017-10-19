@@ -21,6 +21,16 @@ Edit lines __8 and 9__ of the script. Replace `YOUR_EMAIL` and `YOUR_PIN` with y
 > EMAIL='YOUR_EMAIL'  
 > PIN='YOUR_PIN'
 
+__Execution permissions__  
+Running `chmod 744 puregym-tracker.sh` in your terminal should do the trick. For Windows this will have to be done in your Cygwin terminal.
+
+__Manually Running the Script__  
+It is a good idea to manually run the script once before setting up scheduled tasks.  
+The script can be run manually from the terminal/Cygwin by changing directory to its location and entering `./puregym-tracker.sh`.  
+The script should run with no errors and the CSV file should appear in your home directory.
+
+__The CSV file will be located in your home directory. This can be found easily by typing `cd ~` in your terminal (Cygwin for Windows).__
+
 ## Windows  
 In order to get this working on Windows, there is a little more config required since the tracker is a shell script.
 
@@ -34,19 +44,10 @@ __Setting up Task Scheduling__
 1. Import the `PureGymTracker.xml` into Task Scheduler. 
   1. If you want it to run when you're not logged in, select it on the window that pops up.
   1. Click OK when you're done. The task will run within the next 5 minutes.
-  
-__The CSV file will be located in your home directory. This can be found easily by typing `cd ~` in your Cygwin terminal.__
 
 ## Linux and OSX  
-Place the script wherever you like and make sure that the 'user' role has execution priviliges. 
-
-__Execution permissions__  
-Running `chmod 744 puregym-tracker.sh` should do the trick.
-
 __Setting up a CRON job__  
 In your terminal enter `crontab -e`. This will open a Vi editor.  
 Press `i` to go into insert mode.  
 On a new line enter `*/5 * * * * /path/to/puregym-tracker.sh`. Make sure the correct full path is provided.  
 Press `Esc`, then type `:wq` followed pressing `Enter` to save the file.  
-
-__The CSV file will be located in your home directory. This can be found easily by typing `cd ~` in your terminal.__
