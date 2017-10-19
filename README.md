@@ -51,3 +51,4 @@ In your terminal enter `crontab -e`. This will open a Vi editor.
 Press `i` to go into insert mode.  
 On a new line enter `*/5 * * * * /path/to/puregym-tracker.sh`. Make sure the correct full path is provided.  
 Press `Esc`, then type `:wq` followed pressing `Enter` to save the file.  
+The job will run within the next 5 minutes.
