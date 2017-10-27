@@ -17,21 +17,23 @@ __Important things to note__
 * The script writes to CSV using Unix line endings.
 
 ## General Intructions  
-Edit lines __8 and 9__ of the script. Replace `YOUR_EMAIL` and `YOUR_PIN` with your PureGym login credentials.
-> EMAIL='YOUR_EMAIL'  
-> PIN='YOUR_PIN'
+__Clone from GitHub__  
+Clone the project in your terminal by typing:  
+`git clone https://github.com/p-karanthaker/puregym-tracker.git`  
+This will clone it to your current working directory. Change to another directory if you don't want it stored in your current directory.
 
-__Execution permissions__  
-Running `chmod 744 puregym-tracker.sh` in your terminal should do the trick. For Windows this will have to be done in your Cygwin terminal.
+__Execution permissions__ 
+The script needs to be executable in order to run.  
+Use command `chmod 744 puregym-tracker.sh` in your terminal to allow execution.  
+For Windows this will have to be done in your Cygwin terminal.
 
 __Manually Running the Script__  
 It is a good idea to manually run the script once before setting up scheduled tasks.  
-The script can be run manually from the terminal/Cygwin by changing directory to its location and entering `./puregym-tracker.sh`.  
-The script should run with no errors and the CSV file should appear in your home directory.
+The script can be run manually from the terminal/Cygwin by changing directory to its location and entering  
+`./puregym-tracker.sh LOGIN_EMAIL LOGIN_PIN`.  
+The script should run with no errors and the CSV file should appear in the `logs` directory of the puregym-tracker.  
 
-__The CSV file will be located in your home directory. This can be found easily by typing `cd ~` in your terminal (Cygwin for Windows).__
-
-## Windows  
+## Windows (not working)  
 In order to get this working on Windows, there is a little more config required since the tracker is a shell script.
 
 __Pre-requisites__  
@@ -49,6 +51,6 @@ __Setting up Task Scheduling__
 __Setting up a CRON job__  
 In your terminal enter `crontab -e`. This will open a Vi editor.  
 Press `i` to go into insert mode.  
-On a new line enter `*/5 * * * * /path/to/puregym-tracker.sh`. Make sure the correct full path is provided.  
+On a new line enter `*/5 * * * * /path/to/puregym-tracker.sh LOGIN_EMAIL LOGIN_PIN`. Make sure the correct full path is provided.  
 Press `Esc`, then type `:wq` followed pressing `Enter` to save the file.  
 The job will run within the next 5 minutes.
