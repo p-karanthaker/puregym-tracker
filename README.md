@@ -33,19 +33,20 @@ The script can be run manually from the terminal/Cygwin by changing directory to
 `./puregym-tracker.sh LOGIN_EMAIL LOGIN_PIN`.  
 The script should run with no errors and the CSV file should appear in the `logs` directory of the puregym-tracker.  
 
-## Windows (not working)  
+## Windows  
 In order to get this working on Windows, there is a little more config required since the tracker is a shell script.
 
 __Pre-requisites__  
 * Install [Cygwin](https://cygwin.com/install.html) (ensure Curl is installed in the package selection)
 
 __Setting up Task Scheduling__  
-1. Edit lines __48 and 49__ of `PureGymTracker.xml`.  
-1. Replace `[path\to\run.exe]` and `[path\to\puregym-tracker.sh]` with their real paths.  
-1. The default path for `run.exe` is `C:\cygwinXX\bin\run.exe` where `XX` is different based on 32 or 64 bit installations.
-1. Import the `PureGymTracker.xml` into Task Scheduler. 
-  1. If you want it to run when you're not logged in, select it on the window that pops up.
-  1. Click OK when you're done. The task will run within the next 5 minutes.
+1. Import the `PureGymTracker.xml` into Task Scheduler.  
+  1. If you want it to run when you're not logged in, select the radio button on the window that pops up.  
+  1. Go to the `Actions` tab and edit the action listed.
+  1. Replace `path\to\run.exe` with its actual path. (Default: C:\cygwinXX\bin\run.exe) where `XX` different based on 32 or 64 bit installs.
+  1. In `Add arguments`, replace `path\to\puregym-tracker.sh` with its real path.  
+  1. Replace `LOGIN_EMAIL` and `LOGIN_PIN` with your PureGym login credentials.  
+  1. Click OK and OK again when you're done. The task will run within the next 5 minutes.  
 
 ## Linux and OSX  
 __Setting up a CRON job__  
