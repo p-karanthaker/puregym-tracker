@@ -1,12 +1,11 @@
 # puregym-tracker
+### News: I am working on an Android app for this. Stay tuned for more information.
 Simple scripts written to scrape gym activity data from the PureGym website members' area.
 
 Works with:  
 * Windows (requires PowerShell 3 or higher)
 * Linux
 * OSX
-
-## News: I am working on an Android app for this. Stay tuned for more information.
 
 The script logs into the PureGym website using your credentials, scrapes the gym activity from the members' webpage. Then writes the data to a CSV file along with a timestamp. Use the data as it is or import it into a graphing tool to visualise the gym activity trends over time!
 
