@@ -13,8 +13,7 @@ MEMBERS_PAGE='https://www.puregym.com/members/'
 EMAIL="$1"
 PIN="$2"
 
-COOKIE_1="$SCRIPT_LOCATION/cookie1"
-COOKIE_2="$SCRIPT_LOCATION/cookie2"
+SESSION="$SCRIPT_LOCATION/session"
 
 LOGS="$SCRIPT_LOCATION/logs"
 CSV_FILE="$LOGS/data.csv"
@@ -22,13 +21,13 @@ ERROR_LOG="$LOGS/puregym-error.log"
 CSV_HEADER='Timestamp,People'
 
 # Get requestVerificationToken + cookie from login page
-requestVerificationToken=$(curl -s "$LOGIN_PAGE" -c "$COOKIE_1" | grep '__RequestVerificationToken' | sed 's/.* value=\"\(.*\)\".*/\1/')
+requestVerificationToken=$(curl -s "$LOGIN_PAGE" -c "$SESSION" | grep '__RequestVerificationToken' | sed 's/.* value=\"\(.*\)\".*/\1/')
 
-# Send login request using requestVerificationToken and cookie1. Save login session cookie as cookie2
-loginRequest=$(curl -s "$LOGIN_API" -H 'Content-Type: application/json' -H "__requestverificationtoken: "$requestVerificationToken"" -d "{\"email\":\"$EMAIL\",\"pin\":\"$PIN\"}" --compressed -b "$COOKIE_1" -c "$COOKIE_2")
+# Send login request using requestVerificationToken. Save login session cookie.
+loginRequest=$(curl -s "$LOGIN_API" -H 'Content-Type: application/json' -H "__requestverificationtoken: "$requestVerificationToken"" -d "{\"email\":\"$EMAIL\",\"pin\":\"$PIN\"}" --compressed -b "$SESSION" -c "$SESSION")
 
-# Go to members' page using session cookie2 and scrape data
-numberOfPeople=$(curl -s "$MEMBERS_PAGE" -b "$COOKIE_2" | grep '[0-9]+\? people' | sed 's/.*>\([0-9]\{1,\}\).*/\1/')
+# Go to members' page using session cookie and scrape data
+numberOfPeople=$(curl -s "$MEMBERS_PAGE" -b "$SESSION" | grep '[0-9]+\? people' | sed 's/.*>\([0-9]\{1,\}\).*/\1/')
 
 appendData () {
   datetime=$(date '+%Y-%m-%d %H:%M:%S')
@@ -43,4 +42,4 @@ appendData () {
 }
 
 appendData
-rm {"$COOKIE_1","$COOKIE_2"}
+rm $SESSION
