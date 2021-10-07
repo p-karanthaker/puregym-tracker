@@ -1,5 +1,5 @@
 # puregym-tracker
-### NB. I am no longer a member at PureGym so do not know if this works anymore. A nice solution to check out may be [puregym-attendance](https://github.com/2t6h/puregym-attendance) from @2t6h
+### NB. I am no longer a member at PureGym so do not know if this works anymore. A nice solution to check out may be [puregym-attendance](https://github.com/2t6h/puregym-attendance)
 Simple scripts written to scrape gym activity data from the PureGym website members' area.
 
 Works with:  
