@@ -1,5 +1,5 @@
 # puregym-tracker
-### News: I am working on an Android app for this. Stay tuned for more information.
+### NB. I am no longer a member at PureGym so do not know if this works anymore.
 Simple scripts written to scrape gym activity data from the PureGym website members' area.
 
 Works with:  
